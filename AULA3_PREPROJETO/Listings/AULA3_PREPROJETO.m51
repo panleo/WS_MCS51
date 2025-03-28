@@ -1,0 +1,200 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    03/27/2025  21:42:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\AULA3_PREPROJETO.obj TO .\Objects\AULA3_PREPROJETO PRINT (.\Listings\AULA3_PREPROJ
+>> ETO.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\AULA3_PREPROJETO.obj (AULA3_PREPROJETO)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\AULA3_PREPROJETO (AULA3_PREPROJETO)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     002FH     UNIT         ?PR?LCD_INIT?AULA3_PREPROJETO
+            CODE    082FH     0025H     UNIT         ?PR?_LCD_STRING?AULA3_PREPROJETO
+            CODE    0854H     0024H     UNIT         ?PR?LCD_PULSEENABLE?AULA3_PREPROJETO
+            CODE    0878H     0022H     UNIT         ?PR?_ESPERA_US?AULA3_PREPROJETO
+            CODE    089AH     0019H     UNIT         ?C?LIB_CODE
+            CODE    08B3H     000EH     UNIT         ?PR?MAIN?AULA3_PREPROJETO
+            CODE    08C1H     000EH     UNIT         ?PR?_LCD_4B_CMD?AULA3_PREPROJETO
+            CODE    08CFH     000EH     UNIT         ?PR?_LCD_4B_WT?AULA3_PREPROJETO
+            CODE    08DDH     000CH     UNIT         ?C_C51STARTUP
+            CODE    08E9H     000BH     UNIT         ?CO?AULA3_PREPROJETO
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\AULA3_PREPROJETO (AULA3_PREPROJETO)
+
+
+SEGMENT                                        DATA_GROUP 
+  +--> CALLED SEGMENT                        START    LENGTH
+------------------------------------------------------------
+?C_C51STARTUP                                -----    -----
+  +--> ?PR?MAIN?AULA3_PREPROJETO
+
+?PR?MAIN?AULA3_PREPROJETO                    -----    -----
+  +--> ?PR?LCD_INIT?AULA3_PREPROJETO
+  +--> ?CO?AULA3_PREPROJETO
+  +--> ?PR?_LCD_STRING?AULA3_PREPROJETO
+
+?PR?LCD_INIT?AULA3_PREPROJETO                -----    -----
+  +--> ?PR?_ESPERA_US?AULA3_PREPROJETO
+  +--> ?PR?_LCD_4B_CMD?AULA3_PREPROJETO
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/27/2025  21:42:08  PAGE 2
+
+
+
+?PR?_LCD_4B_CMD?AULA3_PREPROJETO             -----    -----
+  +--> ?PR?LCD_PULSEENABLE?AULA3_PREPROJETO
+  +--> ?PR?_ESPERA_US?AULA3_PREPROJETO
+
+?PR?LCD_PULSEENABLE?AULA3_PREPROJETO         -----    -----
+  +--> ?PR?_ESPERA_US?AULA3_PREPROJETO
+
+?PR?_LCD_STRING?AULA3_PREPROJETO             0008H    0003H
+  +--> ?PR?_LCD_4B_WT?AULA3_PREPROJETO
+
+?PR?_LCD_4B_WT?AULA3_PREPROJETO              -----    -----
+  +--> ?PR?LCD_PULSEENABLE?AULA3_PREPROJETO
+  +--> ?PR?_ESPERA_US?AULA3_PREPROJETO
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\AULA3_PREPROJETO (AULA3_PREPROJETO)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        AULA3_PREPROJETO
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:086EH         PUBLIC        LCD_PulseEnable
+  B:0090H.3       PUBLIC        RS
+  C:08B3H         PUBLIC        main
+  C:082FH         PUBLIC        _LCD_String
+  D:0089H         PUBLIC        TMOD
+  C:08C1H         PUBLIC        _LCD_4B_cmd
+  B:0090H.2       PUBLIC        E
+  B:0088H.5       PUBLIC        TF0
+  D:008CH         PUBLIC        TH0
+  C:087CH         PUBLIC        _espera_us
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:0800H         PUBLIC        LCD_INIT
+  C:08CFH         PUBLIC        _LCD_4B_wt
+  -------         PROC          MAIN
+  C:08B3H         LINE#         17
+  C:08B3H         LINE#         18
+  C:08B3H         LINE#         19
+  C:08B6H         LINE#         20
+  C:08BFH         LINE#         21
+  -------         ENDPROC       MAIN
+  C:0878H         SYMBOL        L?0018
+  -------         PROC          L?0017
+  -------         ENDPROC       L?0017
+  C:0878H         SYMBOL        L?0018
+  -------         PROC          _ESPERA_US
+  D:0006H         SYMBOL        tempo_us
+  C:087CH         LINE#         24
+  C:087CH         LINE#         25
+  C:087CH         LINE#         26
+  C:0880H         LINE#         28
+  C:0883H         LINE#         29
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/27/2025  21:42:08  PAGE 3
+
+
+  C:0886H         LINE#         31
+  C:088BH         LINE#         32
+  C:088EH         LINE#         33
+  C:0890H         LINE#         34
+  C:0892H         LINE#         35
+  C:0895H         LINE#         37
+  C:0897H         LINE#         38
+  C:0899H         LINE#         39
+  -------         ENDPROC       _ESPERA_US
+  -------         PROC          LCD_INIT
+  C:0800H         LINE#         41
+  C:0800H         LINE#         42
+  C:0800H         LINE#         43
+  C:0803H         LINE#         56
+  C:0808H         LINE#         57
+  C:080BH         LINE#         60
+  C:0810H         LINE#         61
+  C:0813H         LINE#         64
+  C:0818H         LINE#         65
+  C:081BH         LINE#         68
+  C:0820H         LINE#         69
+  C:0823H         LINE#         72
+  C:0828H         LINE#         73
+  -------         ENDPROC       LCD_INIT
+  -------         PROC          L?0016
+  -------         ENDPROC       L?0016
+  -------         PROC          LCD_PULSEENABLE
+  C:086EH         LINE#         78
+  C:086EH         LINE#         79
+  C:0870H         LINE#         80
+  C:0873H         LINE#         81
+  C:0875H         LINE#         82
+  -------         ENDPROC       LCD_PULSEENABLE
+  -------         PROC          _LCD_4B_CMD
+  D:0005H         SYMBOL        cmd
+  C:08C1H         LINE#         86
+  C:08C3H         LINE#         87
+  C:08C5H         LINE#         88
+  C:08C5H         LINE#         89
+  C:08C5H         LINE#         90
+  C:08C5H         LINE#         91
+  C:08C8H         LINE#         92
+  -------         ENDPROC       _LCD_4B_CMD
+  -------         PROC          _LCD_4B_WT
+  D:0005H         SYMBOL        dado
+  C:08CFH         LINE#         96
+  C:08D1H         LINE#         97
+  C:08D3H         LINE#         98
+  C:08D3H         LINE#         99
+  C:08D3H         LINE#         100
+  C:08D3H         LINE#         101
+  C:08D6H         LINE#         102
+  -------         ENDPROC       _LCD_4B_WT
+  -------         PROC          _LCD_STRING
+  D:0008H         SYMBOL        str
+  C:082FH         LINE#         107
+  C:0835H         LINE#         108
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/27/2025  21:42:08  PAGE 4
+
+
+  C:0840H         LINE#         109
+  C:0851H         LINE#         110
+  C:0853H         LINE#         111
+  -------         ENDPROC       _LCD_STRING
+  -------         ENDMOD        AULA3_PREPROJETO
+
+  -------         MODULE        ?C?CLDPTR
+  C:089AH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00CFH BYTE (10%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=247
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

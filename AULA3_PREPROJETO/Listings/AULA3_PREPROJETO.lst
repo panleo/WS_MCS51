@@ -1,0 +1,140 @@
+C51 COMPILER V9.60.7.0   AULA3_PREPROJETO                                                  03/27/2025 21:42:08 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE AULA3_PREPROJETO
+OBJECT MODULE PLACED IN .\Objects\AULA3_PREPROJETO.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE AULA3_PREPROJETO.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\AULA3_PREPROJETO.lst) TABS(2) OBJECT(.\Objects\AULA3_PREPROJETO.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          #define FREQ_OSC 12000000
+   4          sbit RS = P1^3;
+   5          sbit E  = P1^2;
+   6          #define LCD_DATA P1    // Dados nos P1.4-P1.7 (DB4-DB7)
+   7          
+   8          
+   9          void espera_us(unsigned char tempo_us);
+  10          void LCD_INIT();
+  11          void LCD_4B_cmd(unsigned char cmd);
+  12          void LCD_PulseEnable();
+  13          void LCD_4B_wt(unsigned char dado);
+  14          void LCD_String(char *str);
+  15          
+  16          
+  17          void main()
+  18          { 
+  19   1        LCD_INIT(); 
+  20   1        LCD_String("Hello 8051");  // Escreve no LCD
+  21   1        while(1);
+  22   1      }
+  23          
+  24          void espera_us(unsigned int tempo_us)
+  25          {
+*** WARNING C235 IN LINE 25 OF AULA3_PREPROJETO.c: parameter 1: different types
+  26   1        if (tempo_us == 0) return;
+  27   1      
+  28   1          TMOD &= 0xF0;  // Preserva a configuração do Timer 1
+  29   1          TMOD |= 0x02;  // Timer 0 no Modo 2 (auto-reload)
+  30   1          
+  31   1          TH0 = (256 - tempo_us);
+  32   1          TL0 = TH0;    
+  33   1          TF0 = 0;  // Reseta a flag de overflow
+  34   1          TR0 = 1;  // Liga o Timer 0
+  35   1          while (!TF0);  // Espera até o overflow
+  36   1          
+  37   1          TR0 = 0;  // Desliga o Timer 0
+  38   1          TF0 = 0;  // Reseta a flag
+  39   1      }
+  40          
+  41          void LCD_INIT()
+  42          {
+  43   1          espera_us(60);     // Espera estabilização do LCD
+  44   1          /*
+  45   1          // Configuração inicial (modo 8 bits - 3 vezes)
+  46   1          LCD_4B_cmd(0x30); 
+  47   1          espera_us(50);
+  48   1          LCD_4B_cmd(0x30);
+  49   1          espera_us(50);
+  50   1          LCD_4B_cmd(0x30);
+  51   1          espera_us(50);
+  52   1          */
+  53   1      
+C51 COMPILER V9.60.7.0   AULA3_PREPROJETO                                                  03/27/2025 21:42:08 PAGE 2   
+
+  54   1          
+  55   1          // Mudança para modo 4 bits
+  56   1          LCD_4B_cmd(0x20); 
+  57   1          espera_us(60);
+  58   1          
+  59   1          // Configuração do LCD: 2 linhas, fonte 5x8
+  60   1          LCD_4B_cmd(0x28); 
+  61   1          espera_us(60);
+  62   1          
+  63   1          // Liga display, cursor desligado
+  64   1          LCD_4B_cmd(0x0C); 
+  65   1          espera_us(60);
+  66   1          
+  67   1          // Limpa o display
+  68   1          LCD_4B_cmd(0x01); 
+  69   1          espera_us(60);
+  70   1          
+  71   1          // Modo de entrada (incremento automático)
+  72   1          LCD_4B_cmd(0x06); 
+  73   1          espera_us(60);
+  74   1      
+  75   1      }
+  76          
+  77          // Pulso no pino Enable (E)
+  78          void LCD_PulseEnable() {
+  79   1          E = 1;
+  80   1          espera_us(60);  // Pequeno atraso (~1 µs)
+  81   1          E = 0;
+  82   1          espera_us(60);
+  83   1      }
+  84          
+  85          // Envia um comando para o LCD
+  86          void LCD_4B_cmd(unsigned char cmd) {
+  87   1          RS = 0;           // Modo comando (RS = 0)
+  88   1          LCD_DATA = (LCD_DATA & 0x0F) | (cmd & 0xF0); // Envia nibble alto (P1.4-P1.7)
+  89   1          LCD_PulseEnable();
+  90   1          LCD_DATA = (LCD_DATA & 0x0F) | ((cmd << 4) & 0xF0); // Envia nibble baixo
+  91   1          LCD_PulseEnable();
+  92   1          espera_us(60);
+  93   1      }
+  94          
+  95          // Escreve um caractere no LCD
+  96          void LCD_4B_wt(unsigned char dado) {
+  97   1          RS = 1;           // Modo dado (RS = 1)
+  98   1          LCD_DATA = (LCD_DATA & 0x0F) | (dado & 0xF0); // Nibble alto
+  99   1          LCD_PulseEnable();
+ 100   1          LCD_DATA = (LCD_DATA & 0x0F) | ((dado << 4) & 0xF0); // Nibble baixo
+ 101   1          LCD_PulseEnable();
+ 102   1          espera_us(60);
+ 103   1      }
+ 104          
+ 105          
+ 106          // Escreve uma string no LCD
+ 107          void LCD_String(char *str) {
+ 108   1          while (*str) {
+ 109   2              LCD_4B_wt(*str++);
+ 110   2          }
+ 111   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    196    ----
+C51 COMPILER V9.60.7.0   AULA3_PREPROJETO                                                  03/27/2025 21:42:08 PAGE 3   
+
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
