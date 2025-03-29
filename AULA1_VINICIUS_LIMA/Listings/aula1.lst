@@ -1,0 +1,109 @@
+A51 MACRO ASSEMBLER  AULA1                                                                03/14/2025 21:43:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\aula1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE aula1.a51 SET(SMALL) DEBUG PRINT(.\Listings\aula1.lst) OBJECT(.\Objects
+                      \aula1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000h          ; Define o endereço de início do programa
+                       2     
+                       3     ; Inicialização dos registradores
+0000 7800              4     MOV R0, #0         ; Inicializa R0 (contador de números menores que R7)
+0002 7900              5     MOV R1, #0         ; Inicializa R1 (contador de números maiores que R7)
+0004 7A00              6     MOV R2, #0         ; Inicializa R2 (contador de múltiplos de R7)
+0006 7F02              7     MOV R7, #2         ; Define o valor de referência em R7
+                       8     
+                       9     ; Aponta para o início da lista
+0008 90003B           10     MOV DPTR, #LISTA   ; Carrega o endereço da lista em DPTR
+                      11     
+                      12     ; Loop para percorrer a lista
+000B 7B0C             13     MOV R3, #12        ; R3 é o contador de itens na lista (12 números)
+000D                  14     LOOP:
+000D 7400             15         MOV A, #0      ; Zera o acumulador
+000F 93               16         MOVC A, @A+DPTR; Lê o valor da lista apontado por DPTR
+0010 A3               17         INC DPTR       ; Incrementa DPTR para o próximo item da lista
+                      18     
+                      19         ; Compara o valor lido com R7
+0011 B50702           20         CJNE A, 07h, COMPARE ; Compara A com R7 (valor de referência)
+0014 800A             21         JMP IGUAL       ; Se A = R7, salta para IGUAL
+                      22     
+0016                  23         COMPARE:
+0016 4002             24             JC MENOR    ; Se A < R7, salta para MENOR
+0018 8003             25             JMP MAIOR   ; Se A > R7, salta para MAIOR
+                      26     
+001A                  27         MENOR:
+001A 08               28             INC R0      ; Incrementa o contador de números menores
+001B 8005             29             JMP NEXT    ; Vai para o próximo número
+                      30     
+001D                  31         MAIOR:
+001D 09               32             INC R1      ; Incrementa o contador de números maiores
+001E 8002             33             JMP NEXT    ; Vai para o próximo número
+                      34     
+0020                  35         IGUAL:
+                      36             ; Se A = R7, não incrementa nenhum contador
+0020 8000             37             JMP NEXT    ; Vai para o próximo número
+                      38     
+0022                  39         NEXT:
+0022 DBE9             40             DJNZ R3, LOOP ; Decrementa R3 e repete o loop se R3 != 0
+                      41     
+                      42     ; Verifica múltiplos
+0024 90003B           43     MOV DPTR, #LISTA   ; Reinicia DPTR para o início da lista
+0027 7B0C             44     MOV R3, #12        ; Reinicia o contador de itens na lista
+0029                  45     LOOP_MULT:
+0029 7400             46         MOV A, #0      ; Zera o acumulador
+002B 93               47         MOVC A, @A+DPTR; Lê o valor da lista apontado por DPTR
+002C A3               48         INC DPTR       ; Incrementa DPTR para o próximo item da lista
+                      49     
+                      50         ; Verifica se A é múltiplo de R7
+002D 8FF0             51         MOV B, R7      ; Move R7 para B
+002F 84               52         DIV AB         ; Divide A por B (R7)
+0030 E5F0             53         MOV A, B       ; Move o resto da divisão para A
+0032 6002             54         JZ MULTIPLO    ; Se o resto for zero, A é múltiplo de R7
+0034 8001             55         JMP NEXT_MULT  ; Caso contrário, vai para o próximo número
+                      56     
+0036                  57         MULTIPLO:
+A51 MACRO ASSEMBLER  AULA1                                                                03/14/2025 21:43:16 PAGE     2
+
+0036 0A               58             INC R2     ; Incrementa o contador de múltiplos
+                      59     
+0037                  60         NEXT_MULT:
+0037 DBF0             61             DJNZ R3, LOOP_MULT ; Decrementa R3 e repete o loop se R3 != 0
+                      62     
+                      63     ; Fim do programa
+0039 80FE             64     SJMP $             ; Loop infinito para finalizar o programa
+                      65     
+                      66     ; Lista de números
+003B                  67     LISTA:
+003B D2086736         68         DB 210, 8, 103, 54, 31, 1, 9, 36, 81, 2, 15, 27
+003F 1F010924                
+0043 51020F1B                
+                      69     
+                      70     END
+A51 MACRO ASSEMBLER  AULA1                                                                03/14/2025 21:43:16 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+COMPARE. . . . . .  C ADDR   0016H   A   
+IGUAL. . . . . . .  C ADDR   0020H   A   
+LISTA. . . . . . .  C ADDR   003BH   A   
+LOOP . . . . . . .  C ADDR   000DH   A   
+LOOP_MULT. . . . .  C ADDR   0029H   A   
+MAIOR. . . . . . .  C ADDR   001DH   A   
+MENOR. . . . . . .  C ADDR   001AH   A   
+MULTIPLO . . . . .  C ADDR   0036H   A   
+NEXT . . . . . . .  C ADDR   0022H   A   
+NEXT_MULT. . . . .  C ADDR   0037H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

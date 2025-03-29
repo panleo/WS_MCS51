@@ -1,0 +1,344 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    03/29/2025  14:36:25  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\exemploAula3.obj TO .\Objects\ExemploAula3 PRINT (.\Listings\ExemploAula3.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\exemploAula3.obj (EXEMPLOAULA3)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\ExemploAula3 (EXEMPLOAULA3)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0006H     UNIT         _DATA_GROUP_
+                    000EH     0012H                  *** GAP ***
+            BIT     0020H.0   0000H.3   UNIT         _BIT_GROUP_
+            BIT     0020H.3   0000H.2   UNIT         ?BI?CURSORORDISPLAYSHIFT?EXEMPLOAULA3
+                    0020H.5   0000H.3                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0055H     UNIT         ?PR?_SENDCHAR?EXEMPLOAULA3
+            CODE    0855H     004EH     UNIT         ?PR?_SETDDRAMADDRESS?EXEMPLOAULA3
+            CODE    08A3H     0037H     UNIT         ?CO?EXEMPLOAULA3
+            CODE    08DAH     0036H     UNIT         ?PR?MAIN?EXEMPLOAULA3
+            CODE    0910H     002DH     UNIT         ?C?LIB_CODE
+            CODE    093DH     002BH     UNIT         ?PR?_SENDSTRING?EXEMPLOAULA3
+            CODE    0968H     0021H     UNIT         ?PR?DISPLAYONOFFCONTROL?EXEMPLOAULA3
+            CODE    0989H     001FH     UNIT         ?PR?ENTRYMODESET?EXEMPLOAULA3
+            CODE    09A8H     001EH     UNIT         ?PR?FUNCTIONSET?EXEMPLOAULA3
+            CODE    09C6H     001DH     UNIT         ?PR?CURSORORDISPLAYSHIFT?EXEMPLOAULA3
+            CODE    09E3H     0018H     UNIT         ?PR?DELAY?EXEMPLOAULA3
+            CODE    09FBH     0017H     UNIT         ?PR?RETURNHOME?EXEMPLOAULA3
+            CODE    0A12H     000FH     UNIT         ?PR?_GETBIT?EXEMPLOAULA3
+            CODE    0A21H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\ExemploAula3 (EXEMPLOAULA3)
+
+
+SEGMENT                                          BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT                         START    LENGTH     START    LENGTH
+---------------------------------------------------------------------------------
+?C_C51STARTUP                                 -----    -----      -----    -----
+  +--> ?PR?MAIN?EXEMPLOAULA3
+
+?PR?MAIN?EXEMPLOAULA3                         -----    -----      -----    -----
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  14:36:25  PAGE 2
+
+
+  +--> ?PR?FUNCTIONSET?EXEMPLOAULA3
+  +--> ?PR?ENTRYMODESET?EXEMPLOAULA3
+  +--> ?PR?DISPLAYONOFFCONTROL?EXEMPLOAULA3
+  +--> ?CO?EXEMPLOAULA3
+  +--> ?PR?_SENDSTRING?EXEMPLOAULA3
+  +--> ?PR?_SETDDRAMADDRESS?EXEMPLOAULA3
+
+?PR?FUNCTIONSET?EXEMPLOAULA3                  -----    -----      -----    -----
+  +--> ?PR?DELAY?EXEMPLOAULA3
+
+?PR?ENTRYMODESET?EXEMPLOAULA3                 0020H.0  0000H.2    -----    -----
+  +--> ?PR?DELAY?EXEMPLOAULA3
+
+?PR?DISPLAYONOFFCONTROL?EXEMPLOAULA3          0020H.0  0000H.3    -----    -----
+  +--> ?PR?DELAY?EXEMPLOAULA3
+
+?PR?_SENDSTRING?EXEMPLOAULA3                  -----    -----      0008H    0005H
+  +--> ?PR?_SENDCHAR?EXEMPLOAULA3
+
+?PR?_SENDCHAR?EXEMPLOAULA3                    -----    -----      000DH    0001H
+  +--> ?PR?_GETBIT?EXEMPLOAULA3
+  +--> ?PR?DELAY?EXEMPLOAULA3
+
+?PR?_SETDDRAMADDRESS?EXEMPLOAULA3             -----    -----      0008H    0001H
+  +--> ?PR?_GETBIT?EXEMPLOAULA3
+  +--> ?PR?DELAY?EXEMPLOAULA3
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   ESPERA_US
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\ExemploAula3 (EXEMPLOAULA3)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        EXEMPLOAULA3
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:09E3H         PUBLIC        delay
+  C:09A8H         PUBLIC        functionSet
+  B:0090H.3       PUBLIC        RS
+  C:08DAH         PUBLIC        main
+  C:093DH         PUBLIC        _sendString
+  C:0800H         PUBLIC        _sendChar
+  C:09FBH         PUBLIC        returnHome
+  D:0089H         PUBLIC        TMOD
+  B:00B0H.5       PUBLIC        PINO
+  B:0090H.4       PUBLIC        DB4
+  B:0090H.5       PUBLIC        DB5
+  B:0090H.6       PUBLIC        DB6
+  C:0968H         PUBLIC        displayOnOffControl
+  B:0090H.7       PUBLIC        DB7
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  14:36:25  PAGE 3
+
+
+  C:09C6H         PUBLIC        cursorOrDisplayShift
+  B:0090H.2       PUBLIC        E
+  B:0088H.5       PUBLIC        TF0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:0A12H         PUBLIC        _getBit
+  C:0855H         PUBLIC        _setDdRamAddress
+  C:0989H         PUBLIC        entryModeSet
+  -------         PROC          MAIN
+  C:08DAH         LINE#         22
+  C:08DAH         LINE#         23
+  C:08DDH         LINE#         24
+  C:08E4H         LINE#         25
+  C:08EDH         LINE#         35
+  C:08F6H         LINE#         36
+  C:08FBH         LINE#         37
+  C:0904H         LINE#         40
+  C:0904H         LINE#         41
+  C:0906H         LINE#         42
+  C:0909H         LINE#         43
+  C:090BH         LINE#         44
+  C:090EH         LINE#         45
+  -------         ENDPROC       MAIN
+  -------         PROC          DELAY
+  C:09E3H         LINE#         52
+  C:09E3H         LINE#         53
+  C:09E3H         LINE#         54
+  C:09E6H         LINE#         55
+  C:09E9H         LINE#         57
+  C:09ECH         LINE#         58
+  C:09EFH         LINE#         59
+  C:09F1H         LINE#         60
+  C:09F3H         LINE#         61
+  C:09F6H         LINE#         63
+  C:09F8H         LINE#         64
+  C:09FAH         LINE#         65
+  -------         ENDPROC       DELAY
+  -------         PROC          RETURNHOME
+  C:09FBH         LINE#         67
+  C:09FBH         LINE#         68
+  C:09FDH         LINE#         69
+  C:09FFH         LINE#         70
+  C:0A01H         LINE#         71
+  C:0A03H         LINE#         72
+  C:0A05H         LINE#         73
+  C:0A07H         LINE#         74
+  C:0A09H         LINE#         75
+  C:0A0BH         LINE#         76
+  C:0A0DH         LINE#         77
+  C:0A0FH         LINE#         78
+  -------         ENDPROC       RETURNHOME
+  -------         PROC          ENTRYMODESET
+  B:0020H.0       SYMBOL        id
+  B:0020H.1       SYMBOL        s
+  C:0989H         LINE#         80
+  C:0989H         LINE#         81
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  14:36:25  PAGE 4
+
+
+  C:098BH         LINE#         82
+  C:098DH         LINE#         83
+  C:098FH         LINE#         84
+  C:0991H         LINE#         85
+  C:0993H         LINE#         86
+  C:0995H         LINE#         87
+  C:0997H         LINE#         88
+  C:0999H         LINE#         89
+  C:099DH         LINE#         90
+  C:09A1H         LINE#         91
+  C:09A3H         LINE#         92
+  C:09A5H         LINE#         93
+  -------         ENDPROC       ENTRYMODESET
+  -------         PROC          DISPLAYONOFFCONTROL
+  B:0020H.0       SYMBOL        display
+  B:0020H.1       SYMBOL        cursor
+  B:0020H.2       SYMBOL        blinking
+  C:0968H         LINE#         95
+  C:0968H         LINE#         96
+  C:096AH         LINE#         97
+  C:096CH         LINE#         98
+  C:096EH         LINE#         99
+  C:0970H         LINE#         100
+  C:0972H         LINE#         101
+  C:0974H         LINE#         102
+  C:0976H         LINE#         103
+  C:097AH         LINE#         104
+  C:097EH         LINE#         105
+  C:0982H         LINE#         106
+  C:0984H         LINE#         107
+  C:0986H         LINE#         108
+  -------         ENDPROC       DISPLAYONOFFCONTROL
+  -------         PROC          CURSORORDISPLAYSHIFT
+  B:0020H.3       SYMBOL        sc
+  B:0020H.4       SYMBOL        rl
+  C:09C6H         LINE#         110
+  C:09C6H         LINE#         111
+  C:09C8H         LINE#         112
+  C:09CAH         LINE#         113
+  C:09CCH         LINE#         114
+  C:09CEH         LINE#         115
+  C:09D0H         LINE#         116
+  C:09D2H         LINE#         117
+  C:09D4H         LINE#         118
+  C:09D8H         LINE#         119
+  C:09DCH         LINE#         120
+  C:09DEH         LINE#         121
+  C:09E0H         LINE#         122
+  -------         ENDPROC       CURSORORDISPLAYSHIFT
+  -------         PROC          FUNCTIONSET
+  C:09A8H         LINE#         125
+  C:09A8H         LINE#         128
+  C:09AAH         LINE#         129
+  C:09ACH         LINE#         130
+  C:09AEH         LINE#         131
+  C:09B0H         LINE#         132
+  C:09B2H         LINE#         133
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  14:36:25  PAGE 5
+
+
+  C:09B4H         LINE#         134
+  C:09B6H         LINE#         135
+  C:09B9H         LINE#         136
+  C:09BBH         LINE#         137
+  C:09BDH         LINE#         138
+  C:09BFH         LINE#         139
+  C:09C1H         LINE#         140
+  C:09C3H         LINE#         141
+  -------         ENDPROC       FUNCTIONSET
+  -------         PROC          _SETDDRAMADDRESS
+  D:0008H         SYMBOL        address
+  C:0855H         LINE#         143
+  C:0857H         LINE#         144
+  C:0859H         LINE#         145
+  C:085BH         LINE#         146
+  C:0862H         LINE#         147
+  C:086BH         LINE#         148
+  C:0874H         LINE#         149
+  C:0876H         LINE#         150
+  C:0878H         LINE#         151
+  C:0881H         LINE#         152
+  C:088AH         LINE#         153
+  C:0893H         LINE#         154
+  C:089CH         LINE#         155
+  C:089EH         LINE#         156
+  C:08A0H         LINE#         157
+  -------         ENDPROC       _SETDDRAMADDRESS
+  -------         PROC          _SENDCHAR
+  D:000DH         SYMBOL        c
+  C:0800H         LINE#         159
+  C:0802H         LINE#         160
+  C:0809H         LINE#         161
+  C:0812H         LINE#         162
+  C:081BH         LINE#         163
+  C:0824H         LINE#         164
+  C:0826H         LINE#         165
+  C:0828H         LINE#         166
+  C:082AH         LINE#         167
+  C:0833H         LINE#         168
+  C:083CH         LINE#         169
+  C:0845H         LINE#         170
+  C:084EH         LINE#         171
+  C:0850H         LINE#         172
+  C:0852H         LINE#         173
+  -------         ENDPROC       _SENDCHAR
+  -------         PROC          _SENDSTRING
+  D:0008H         SYMBOL        str
+  -------         DO            
+  D:000BH         SYMBOL        index
+  -------         ENDDO         
+  C:093DH         LINE#         178
+  C:0943H         LINE#         179
+  C:0948H         LINE#         180
+  C:095AH         LINE#         181
+  C:095DH         LINE#         182
+  C:0965H         LINE#         183
+  C:0967H         LINE#         184
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  14:36:25  PAGE 6
+
+
+  -------         ENDPROC       _SENDSTRING
+  -------         PROC          _GETBIT
+  D:0007H         SYMBOL        c
+  D:0005H         SYMBOL        bitNumber
+  C:0A12H         LINE#         185
+  C:0A12H         LINE#         186
+  C:0A20H         LINE#         187
+  -------         ENDPROC       _GETBIT
+  -------         ENDMOD        EXEMPLOAULA3
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0910H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RETURNHOME?EXEMPLOAULA3
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CURSORORDISPLAYSHIFT?EXEMPLOAULA3
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ESPERA_US
+    MODULE:  .\Objects\exemploAula3.obj (EXEMPLOAULA3)
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ESPERA_US
+    MODULE:  .\Objects\exemploAula3.obj (EXEMPLOAULA3)
+    ADDRESS: 0907H
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ESPERA_US
+    MODULE:  .\Objects\exemploAula3.obj (EXEMPLOAULA3)
+    ADDRESS: 090CH
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 01F4H BYTE (24%) *
+******************************************************************************
+
+Program Size: data=15.5 xdata=0 code=560
+LINK/LOCATE RUN COMPLETE.  5 WARNING(S),  0 ERROR(S)

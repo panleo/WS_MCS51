@@ -1,0 +1,361 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    03/29/2025  16:42:01  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\lab3_matheus_vini.obj TO .\Objects\AULA3_display_timer0 PRINT (.\Listings\AULA3_di
+>> splay_timer0.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\lab3_matheus_vini.obj (LAB3_MATHEUS_VINI)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\AULA3_display_timer0 (LAB3_MATHEUS_VINI)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            BIT     0020H.0   0000H.3   UNIT         _BIT_GROUP_
+                    0020H.3   0000H.5                *** GAP ***
+            DATA    0021H     0047H     UNIT         _DATA_GROUP_
+            IDATA   0068H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     010FH     UNIT         ?C?LIB_CODE
+            CODE    090FH     00C1H     UNIT         ?PR?MAIN?LAB3_MATHEUS_VINI
+            CODE    09D0H     0068H     UNIT         ?PR?_SENDSTRING?LAB3_MATHEUS_VINI
+            CODE    0A38H     005BH     UNIT         ?PR?_SENDCHAR?LAB3_MATHEUS_VINI
+            CODE    0A93H     004EH     UNIT         ?PR?_SETDDRAMADDRESS?LAB3_MATHEUS_VINI
+            CODE    0AE1H     0021H     UNIT         ?PR?DISPLAYONOFFCONTROL?LAB3_MATHEUS_VINI
+            CODE    0B02H     0020H     UNIT         ?CO?LAB3_MATHEUS_VINI
+            CODE    0B22H     001FH     UNIT         ?PR?ENTRYMODESET?LAB3_MATHEUS_VINI
+            CODE    0B41H     001EH     UNIT         ?PR?FUNCTIONSET?LAB3_MATHEUS_VINI
+            CODE    0B5FH     0018H     UNIT         ?PR?DELAY?LAB3_MATHEUS_VINI
+            CODE    0B77H     0017H     UNIT         ?PR?RETURNHOME?LAB3_MATHEUS_VINI
+            CODE    0B8EH     000FH     UNIT         ?PR?_GETBIT?LAB3_MATHEUS_VINI
+            CODE    0B9DH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\AULA3_display_timer0 (LAB3_MATHEUS_VINI)
+
+
+SEGMENT                                             BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH     START    LENGTH
+------------------------------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----      -----    -----
+  +--> ?PR?MAIN?LAB3_MATHEUS_VINI
+
+?PR?MAIN?LAB3_MATHEUS_VINI                       -----    -----      0021H    0041H
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  16:42:01  PAGE 2
+
+
+  +--> ?CO?LAB3_MATHEUS_VINI
+  +--> ?PR?FUNCTIONSET?LAB3_MATHEUS_VINI
+  +--> ?PR?ENTRYMODESET?LAB3_MATHEUS_VINI
+  +--> ?PR?DISPLAYONOFFCONTROL?LAB3_MATHEUS_...
+  +--> ?PR?_SENDSTRING?LAB3_MATHEUS_VINI
+  +--> ?PR?DELAY?LAB3_MATHEUS_VINI
+
+?PR?FUNCTIONSET?LAB3_MATHEUS_VINI                -----    -----      -----    -----
+  +--> ?PR?DELAY?LAB3_MATHEUS_VINI
+
+?PR?ENTRYMODESET?LAB3_MATHEUS_VINI               0020H.0  0000H.2    -----    -----
+  +--> ?PR?DELAY?LAB3_MATHEUS_VINI
+
+?PR?DISPLAYONOFFCONTROL?LAB3_MATHEUS_...         0020H.0  0000H.3    -----    -----
+  +--> ?PR?DELAY?LAB3_MATHEUS_VINI
+
+?PR?_SENDSTRING?LAB3_MATHEUS_VINI                -----    -----      0062H    0005H
+  +--> ?PR?_SENDCHAR?LAB3_MATHEUS_VINI
+  +--> ?PR?_SETDDRAMADDRESS?LAB3_MATHEUS_VINI
+
+?PR?_SENDCHAR?LAB3_MATHEUS_VINI                  -----    -----      0067H    0001H
+  +--> ?PR?_GETBIT?LAB3_MATHEUS_VINI
+  +--> ?PR?DELAY?LAB3_MATHEUS_VINI
+
+?PR?_SETDDRAMADDRESS?LAB3_MATHEUS_VINI           -----    -----      0067H    0001H
+  +--> ?PR?_GETBIT?LAB3_MATHEUS_VINI
+  +--> ?PR?DELAY?LAB3_MATHEUS_VINI
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\AULA3_display_timer0 (LAB3_MATHEUS_VINI)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB3_MATHEUS_VINI
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:0B5FH         PUBLIC        delay
+  C:0B41H         PUBLIC        functionSet
+  B:0090H.3       PUBLIC        RS
+  C:090FH         PUBLIC        main
+  C:09D0H         PUBLIC        _sendString
+  C:0A3EH         PUBLIC        _sendChar
+  C:0B77H         PUBLIC        returnHome
+  D:0089H         PUBLIC        TMOD
+  B:0090H.4       PUBLIC        DB4
+  B:0090H.5       PUBLIC        DB5
+  B:0090H.6       PUBLIC        DB6
+  C:0AE1H         PUBLIC        displayOnOffControl
+  B:0090H.7       PUBLIC        DB7
+  C:0B02H         SYMBOL        _?ix1000
+  B:0090H.2       PUBLIC        E
+  B:0088H.5       PUBLIC        TF0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  16:42:01  PAGE 3
+
+
+  B:0088H.4       PUBLIC        TR0
+  C:0B8EH         PUBLIC        _getBit
+  C:0A93H         PUBLIC        _setDdRamAddress
+  C:0B22H         PUBLIC        entryModeSet
+  -------         PROC          MAIN
+  -------         DO            
+  D:0021H         SYMBOL        mensagem
+  D:0007H         SYMBOL        mascara
+  D:0041H         SYMBOL        variavel_mascara
+  D:0006H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  D:0042H         SYMBOL        teste
+  -------         ENDDO         
+  C:090FH         LINE#         23
+  C:090FH         LINE#         24
+  C:090FH         LINE#         25
+  C:0922H         LINE#         27
+  C:0925H         LINE#         31
+  C:0928H         LINE#         32
+  C:092FH         LINE#         33
+  C:0938H         LINE#         40
+  C:094BH         LINE#         41
+  C:094BH         LINE#         42
+  C:094DH         LINE#         43
+  C:094DH         LINE#         45
+  C:0957H         LINE#         46
+  C:0959H         LINE#         47
+  C:095BH         LINE#         49
+  C:095BH         LINE#         50
+  C:0967H         LINE#         51
+  C:0967H         LINE#         52
+  C:096BH         LINE#         54
+  C:096DH         LINE#         55
+  C:096DH         LINE#         56
+  C:09A9H         LINE#         63
+  C:09A9H         LINE#         65
+  C:09ABH         LINE#         67
+  C:09ADH         LINE#         68
+  C:09ADH         LINE#         69
+  C:09B1H         LINE#         70
+  C:09B6H         LINE#         72
+  C:09B6H         LINE#         73
+  C:09B6H         LINE#         74
+  C:09B9H         LINE#         76
+  C:09C2H         LINE#         84
+  C:09C2H         LINE#         85
+  C:09C2H         LINE#         86
+  C:09C5H         LINE#         87
+  C:09C8H         LINE#         88
+  C:09CBH         LINE#         89
+  C:09CEH         LINE#         90
+  -------         ENDPROC       MAIN
+  -------         PROC          DELAY
+  C:0B5FH         LINE#         99
+  C:0B5FH         LINE#         100
+  C:0B5FH         LINE#         101
+  C:0B62H         LINE#         102
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  16:42:01  PAGE 4
+
+
+  C:0B65H         LINE#         103
+  C:0B68H         LINE#         104
+  C:0B6BH         LINE#         105
+  C:0B6DH         LINE#         106
+  C:0B6FH         LINE#         107
+  C:0B72H         LINE#         108
+  C:0B74H         LINE#         109
+  C:0B76H         LINE#         110
+  -------         ENDPROC       DELAY
+  -------         PROC          RETURNHOME
+  C:0B77H         LINE#         111
+  C:0B77H         LINE#         112
+  C:0B77H         LINE#         113
+  C:0B79H         LINE#         114
+  C:0B7BH         LINE#         115
+  C:0B7DH         LINE#         116
+  C:0B7FH         LINE#         117
+  C:0B81H         LINE#         118
+  C:0B83H         LINE#         119
+  C:0B85H         LINE#         120
+  C:0B87H         LINE#         121
+  C:0B89H         LINE#         122
+  C:0B8BH         LINE#         123
+  -------         ENDPROC       RETURNHOME
+  -------         PROC          ENTRYMODESET
+  B:0020H.0       SYMBOL        id
+  B:0020H.1       SYMBOL        s
+  C:0B22H         LINE#         125
+  C:0B22H         LINE#         126
+  C:0B22H         LINE#         127
+  C:0B24H         LINE#         128
+  C:0B26H         LINE#         129
+  C:0B28H         LINE#         130
+  C:0B2AH         LINE#         131
+  C:0B2CH         LINE#         132
+  C:0B2EH         LINE#         133
+  C:0B30H         LINE#         134
+  C:0B32H         LINE#         135
+  C:0B36H         LINE#         136
+  C:0B3AH         LINE#         137
+  C:0B3CH         LINE#         138
+  C:0B3EH         LINE#         139
+  -------         ENDPROC       ENTRYMODESET
+  -------         PROC          DISPLAYONOFFCONTROL
+  B:0020H.0       SYMBOL        display
+  B:0020H.1       SYMBOL        cursor
+  B:0020H.2       SYMBOL        blinking
+  C:0AE1H         LINE#         141
+  C:0AE1H         LINE#         142
+  C:0AE1H         LINE#         143
+  C:0AE3H         LINE#         144
+  C:0AE5H         LINE#         145
+  C:0AE7H         LINE#         146
+  C:0AE9H         LINE#         147
+  C:0AEBH         LINE#         148
+  C:0AEDH         LINE#         149
+  C:0AEFH         LINE#         150
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  16:42:01  PAGE 5
+
+
+  C:0AF3H         LINE#         151
+  C:0AF7H         LINE#         152
+  C:0AFBH         LINE#         153
+  C:0AFDH         LINE#         154
+  C:0AFFH         LINE#         155
+  -------         ENDPROC       DISPLAYONOFFCONTROL
+  -------         PROC          FUNCTIONSET
+  C:0B41H         LINE#         158
+  C:0B41H         LINE#         159
+  C:0B41H         LINE#         162
+  C:0B43H         LINE#         163
+  C:0B45H         LINE#         164
+  C:0B47H         LINE#         165
+  C:0B49H         LINE#         166
+  C:0B4BH         LINE#         167
+  C:0B4DH         LINE#         168
+  C:0B4FH         LINE#         169
+  C:0B52H         LINE#         170
+  C:0B54H         LINE#         171
+  C:0B56H         LINE#         172
+  C:0B58H         LINE#         173
+  C:0B5AH         LINE#         174
+  C:0B5CH         LINE#         175
+  -------         ENDPROC       FUNCTIONSET
+  -------         PROC          _SETDDRAMADDRESS
+  D:0067H         SYMBOL        address
+  C:0A93H         LINE#         177
+  C:0A95H         LINE#         178
+  C:0A95H         LINE#         179
+  C:0A97H         LINE#         180
+  C:0A99H         LINE#         181
+  C:0AA0H         LINE#         182
+  C:0AA9H         LINE#         183
+  C:0AB2H         LINE#         184
+  C:0AB4H         LINE#         185
+  C:0AB6H         LINE#         186
+  C:0ABFH         LINE#         187
+  C:0AC8H         LINE#         188
+  C:0AD1H         LINE#         189
+  C:0ADAH         LINE#         190
+  C:0ADCH         LINE#         191
+  C:0ADEH         LINE#         192
+  -------         ENDPROC       _SETDDRAMADDRESS
+  -------         PROC          L?0040
+  -------         ENDPROC       L?0040
+  -------         PROC          _SENDCHAR
+  D:0067H         SYMBOL        c
+  C:0A3EH         LINE#         194
+  C:0A40H         LINE#         195
+  C:0A40H         LINE#         196
+  C:0A47H         LINE#         197
+  C:0A50H         LINE#         198
+  C:0A59H         LINE#         199
+  C:0A62H         LINE#         200
+  C:0A64H         LINE#         201
+  C:0A66H         LINE#         202
+  C:0A68H         LINE#         203
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/29/2025  16:42:01  PAGE 6
+
+
+  C:0A71H         LINE#         204
+  C:0A7AH         LINE#         205
+  C:0A83H         LINE#         206
+  C:0A8CH         LINE#         207
+  C:0A8EH         LINE#         208
+  C:0A90H         LINE#         209
+  -------         ENDPROC       _SENDCHAR
+  -------         PROC          _SENDSTRING
+  D:0062H         SYMBOL        str
+  -------         DO            
+  D:0065H         SYMBOL        index
+  -------         ENDDO         
+  C:09D0H         LINE#         213
+  C:09D6H         LINE#         214
+  C:09D6H         LINE#         215
+  C:09DBH         LINE#         216
+  C:09E6H         LINE#         217
+  C:09E6H         LINE#         218
+  C:0A00H         LINE#         219
+  C:0A00H         LINE#         220
+  C:0A0FH         LINE#         221
+  C:0A17H         LINE#         222
+  C:0A19H         LINE#         224
+  C:0A19H         LINE#         225
+  C:0A1EH         LINE#         226
+  C:0A2DH         LINE#         227
+  C:0A35H         LINE#         228
+  C:0A35H         LINE#         229
+  C:0A37H         LINE#         230
+  -------         ENDPROC       _SENDSTRING
+  -------         PROC          _GETBIT
+  D:0007H         SYMBOL        c
+  D:0005H         SYMBOL        bitNumber
+  C:0B8EH         LINE#         232
+  C:0B8EH         LINE#         233
+  C:0B8EH         LINE#         234
+  C:0B9CH         LINE#         235
+  -------         ENDPROC       _GETBIT
+  -------         ENDMOD        LAB3_MATHEUS_VINI
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?CLDPTR
+  C:08F6H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RETURNHOME?LAB3_MATHEUS_VINI
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 028EH BYTE (31%) *
+******************************************************************************
+
+Program Size: data=80.3 xdata=0 code=940
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
