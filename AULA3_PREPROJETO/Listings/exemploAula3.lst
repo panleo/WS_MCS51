@@ -1,0 +1,223 @@
+C51 COMPILER V9.60.7.0   EXEMPLOAULA3                                                      03/29/2025 14:36:25 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE EXEMPLOAULA3
+OBJECT MODULE PLACED IN .\Objects\exemploAula3.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE exemploAula3.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\exemploAula3.lst) TABS(2) OBJECT(.\Objects\exemploAula3.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          sbit DB7 = P1^7;
+   3          sbit DB6 = P1^6;
+   4          sbit DB5 = P1^5;
+   5          sbit DB4 = P1^4;
+   6          sbit RS = P1^3;
+   7          sbit E = P1^2;
+   8          sbit PINO = P3^5;
+   9          #define LCD_DATA P1    // Dados nos P1.4-P1.7 (DB4-DB7)
+  10          
+  11          void returnHome(void);
+  12          void entryModeSet(bit id, bit s);
+  13          void displayOnOffControl(bit display, bit cursor, bit blinking);
+  14          void cursorOrDisplayShift(bit sc, bit rl);
+  15          void functionSet(void);
+  16          void setDdRamAddress(char address);
+  17          void sendChar(char c);
+  18          void sendString(char* str);
+  19          bit getBit(char c, char bitNumber);
+  20          void delay(void);
+  21          
+  22          void main(void) {
+  23   1      functionSet();
+  24   1      entryModeSet(1, 0); // increment and no shift
+  25   1      displayOnOffControl(1, 1, 1); // display on, cursor on and blinking on
+  26   1        
+  27   1        //char mensagem[32] = "XP SHPXOR YR PXN ^RPX^\\ R RHIRSR";
+  28   1        //char mascara;
+  29   1        //char variavel_mascara= -1;
+  30   1        //char i;
+  31   1        //char teste[32];
+  32   1        //char linha[16];
+  33   1        //char j;
+  34   1      
+  35   1      sendString("EdSim51 LCD Module Simulation");
+  36   1      setDdRamAddress(0x40); // set address to start of second line
+  37   1      sendString("Based on Hitachi HD44780");
+  38   1      
+  39   1      
+  40   1      while (1) {
+  41   2        PINO = 1;
+  42   2        espera_us();
+*** WARNING C206 IN LINE 42 OF exemploAula3.c: 'espera_us': missing function-prototype
+  43   2        PINO = 0;
+  44   2        espera_us();
+  45   2      }
+  46   1      }
+  47          
+  48          // LCD Module instructions -------------------------------------------
+  49          // To understand why the pins are being set to the particular values in the functions
+  50          // below, see HD44780.pdf.
+  51          
+  52          void delay()
+  53          {
+C51 COMPILER V9.60.7.0   EXEMPLOAULA3                                                      03/29/2025 14:36:25 PAGE 2   
+
+  54   1        TMOD &= 0xF0;  // Preserva a configuração do Timer 1
+  55   1        TMOD |= 0x02;  // Timer 0 no Modo 2 (auto-reload)
+  56   1          
+  57   1        TL0 = 182; //(256 - tempo_us);
+  58   1        TH0 = TL0;    
+  59   1        TF0 = 0;  // Reseta a flag de overflow
+  60   1        TR0 = 1;  // Liga o Timer 0
+  61   1        while (!TF0);  // Espera até o overflow
+  62   1          
+  63   1        TR0 = 0;  // Desliga o Timer 0
+  64   1        TF0 = 0;  // Reseta a flag
+  65   1      }
+  66          
+  67          void returnHome(void) {
+  68   1      RS = 0;
+  69   1      DB7 = 0;
+  70   1      DB6 = 0;
+  71   1      DB5 = 0;
+  72   1      DB4 = 0;
+  73   1      E = 1;
+  74   1      E = 0;
+  75   1      DB5 = 1;
+  76   1      E = 1;
+  77   1      E = 0;
+  78   1      delay();
+  79   1      }
+  80          void entryModeSet(bit id, bit s) {
+  81   1      RS = 0;
+  82   1      DB7 = 0;
+  83   1      DB6 = 0;
+  84   1      DB5 = 0;
+  85   1      DB4 = 0;
+  86   1      E = 1;
+  87   1      E = 0;
+  88   1      DB6 = 1;
+  89   1      DB5 = id;
+  90   1      DB4 = s;
+  91   1      E = 1;
+  92   1      E = 0;
+  93   1      delay();
+  94   1      }
+  95          void displayOnOffControl(bit display, bit cursor, bit blinking) {
+  96   1      DB7 = 0;
+  97   1      DB6 = 0;
+  98   1      DB5 = 0;
+  99   1      DB4 = 0;
+ 100   1      E = 1;
+ 101   1      E = 0;
+ 102   1      DB7 = 1;
+ 103   1      DB6 = display;
+ 104   1      DB5 = cursor;
+ 105   1      DB4 = blinking;
+ 106   1      E = 1;
+ 107   1      E = 0;
+ 108   1      delay();
+ 109   1      }
+ 110          void cursorOrDisplayShift(bit sc, bit rl) {
+ 111   1      RS = 0;
+ 112   1      DB7 = 0;
+ 113   1      DB6 = 0;
+ 114   1      DB5 = 0;
+ 115   1      DB4 = 1;
+C51 COMPILER V9.60.7.0   EXEMPLOAULA3                                                      03/29/2025 14:36:25 PAGE 3   
+
+ 116   1      E = 1;
+ 117   1      E = 0;
+ 118   1      DB7 = sc;
+ 119   1      DB6 = rl;
+ 120   1      E = 1;
+ 121   1      E = 0;
+ 122   1      delay();
+ 123   1      }
+ 124          
+ 125          void functionSet(void) {
+ 126   1      // The high nibble for the function set is actually sent twice. Why? See 4-bit operation
+ 127   1      // on pages 39 and 42 of HD44780.pdf.
+ 128   1      DB7 = 0;
+ 129   1      DB6 = 0;
+ 130   1      DB5 = 1;
+ 131   1      DB4 = 0;
+ 132   1      RS = 0;
+ 133   1      E = 1;
+ 134   1      E = 0;
+ 135   1      delay();
+ 136   1      E = 1;
+ 137   1      E = 0;
+ 138   1      DB7 = 1;
+ 139   1      E = 1;
+ 140   1      E = 0;
+ 141   1      delay();
+ 142   1      }
+ 143          void setDdRamAddress(char address) {
+ 144   1      RS = 0;
+ 145   1      DB7 = 1;
+ 146   1      DB6 = getBit(address, 6);
+ 147   1      DB5 = getBit(address, 5);
+ 148   1      DB4 = getBit(address, 4);
+ 149   1      E = 1;
+ 150   1      E = 0;
+ 151   1      DB7 = getBit(address, 3);
+ 152   1      DB6 = getBit(address, 2);
+ 153   1      DB5 = getBit(address, 1);
+ 154   1      DB4 = getBit(address, 0);
+ 155   1      E = 1;
+ 156   1      E = 0;
+ 157   1      delay();
+ 158   1      }
+ 159          void sendChar(char c) {
+ 160   1      DB7 = getBit(c, 7);
+ 161   1      DB6 = getBit(c, 6);
+ 162   1      DB5 = getBit(c, 5);
+ 163   1      DB4 = getBit(c, 4);
+ 164   1      RS = 1;
+ 165   1      E = 1;
+ 166   1      E = 0;
+ 167   1      DB7 = getBit(c, 3);
+ 168   1      DB6 = getBit(c, 2);
+ 169   1      DB5 = getBit(c, 1);
+ 170   1      DB4 = getBit(c, 0);
+ 171   1      E = 1;
+ 172   1      E = 0;
+ 173   1      delay();
+ 174   1      }
+ 175          // -- End of LCD Module instructions
+ 176          // --------------------------------------------------------------------
+ 177          
+C51 COMPILER V9.60.7.0   EXEMPLOAULA3                                                      03/29/2025 14:36:25 PAGE 4   
+
+ 178          void sendString(char* str) {
+ 179   1      int index = 0;
+ 180   1      while (str[index] != 0) {
+ 181   2      sendChar(str[index]);
+ 182   2      index++;
+ 183   2      }
+ 184   1      }
+ 185          bit getBit(char c, char bitNumber) {
+ 186   1      return (c >> bitNumber) & 1;
+ 187   1      }
+ 188          /*
+ 189          void delay(void) {
+ 190          char c;
+ 191          for (c = 0; c < 50; c++);
+ 192          }*/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    445    ----
+   CONSTANT SIZE    =     55    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       7
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
